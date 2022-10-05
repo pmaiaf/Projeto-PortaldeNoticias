@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('partials/header.html') %>
+
+
+        <div class="container" style="text-align:center ; padding: top 3%;">
+           
+                <form enctype="multipart/form-data" method="post" action="/admin/cadastro"  class="form-painel" >
+                    <h1>Cadastrar Noticia</h1>
+           
+                    <input  type="text" name="titulo_noticia" class="form-control" id="" placeholder="Titúlo"><br>
+                    <input type="text" name="slug_noticia" class="form-control"  id="" placeholder="Slug"><br><br>
+                    <textarea name="descricao_noticia" class="form-control"  placeholder="Conteúdo"></textarea> <br>
+                    <input type="text"  name="url_imagem" placeholder="Url da imagem" class="form-control">
+
+                    <input type="submit" name="acao" style="margin-top:5%;"></input>
+                </form>
+        </div>
+        <div class="conteiner" style="text-align:center ;">
+            <div>
+                <h2>Listando</h2>
+            <div style="padding-bottom: 2%;" class="container">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Titúlo</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Slug</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i=0; i < posts.length; i++){ %>
+                          <tr>
+                            <td> <%= posts[i].titulo %></td>
+                            <td> <%= posts[i].autor %></td>
+                            <td> <%= posts[i].slug %></td>
+                            <td><a href="/admin/deletar/<%= posts[i].id %>"> Deletar</a></td>
+                            <% } %>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+            </div>
+        </div>
+     
+
+            <%- include('partials/footer.html') %>
+                <style>
+       .form-painel {
+        display: flex;
+        flex-direction: column;
+        padding: 10%;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+  }
+     .form-painel button{
+         border-radius: 24px;
+         padding: 1%;
+         width: 18%;
+         font-size: 18px;
+         color: white;
+         background-color: rgb(26, 19, 129);
+         font-weight: bold;
+         border: none;
+         font-family: 'Arial', Courier, monospace;
+ }
+     .form-painel input {
+       width: 45%;
+     }
+     .form-painel textarea {
+       width: 45%;
+     }
+              
+    </style>
+
+</body>
+
+</html>
